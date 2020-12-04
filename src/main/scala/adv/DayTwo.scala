@@ -29,7 +29,7 @@ object DayTwo extends BaseApp {
           val first = pwd.lift(min.toInt - 1).getOrElse(" ")
           val second = pwd.lift(max.toInt - 1).getOrElse(" ")
           second != first && (first.toString == letter || second.toString == letter)
-        case Nil => false
+        case _ => false
       }
     }
 

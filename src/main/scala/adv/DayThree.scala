@@ -3,32 +3,30 @@ package adv
 object DayThree extends BaseApp {
   def filename = "input_day3"
 
-  val patternL = lines.head.length
+  val mapWidth = lines.head.length
 
-  private def slope_check(inc_x: Int, inc_y: Int) = {
-    var c = 0
-    var x = 0
-    var y = 0
+  private def slope_check(stepX: Int, stepY: Int): Int = {
+    var treeCount = 0
+    var posX = 0
+    var posY = 0
 
-    while (y < lines.length) {
-      x += inc_x
-      y += inc_y
-      if (x >= patternL) {
-        x = x - patternL
+    while (posY < lines.length) {
+      posX += stepX
+      posY += stepY
+      if (posX >= mapWidth) {
+        posX = posX - mapWidth
       }
 
-      if (y < lines.length) {
-        val p = lines(y)(x)
-        print(p)
-
-        if (p.toString == "#") {
-          c += 1
+      if (posY < lines.length) {
+        val point = lines(posY)(posX)
+        if (point.toString == "#") {
+          treeCount += 1
         }
       }
 
     }
 
-    c
+    treeCount
   }
 
   val slOne = slope_check(1, 1)
