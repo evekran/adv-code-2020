@@ -9,10 +9,10 @@ object DayTwo extends BaseApp {
 
       rule.split(separators).toList match {
         case min :: max :: letter :: _ :: pwd :: _ =>
-          val occ = pwd.toCharArray.groupBy(identity).map {
+          val occurrences = pwd.toCharArray.groupBy(identity).map {
             case (char, list) => char -> list.length
           }
-          val count = occ.getOrElse(letter.toCharArray.head, 0)
+          val count = occurrences.getOrElse(letter.toCharArray.head, 0)
           count >= min.toInt && count <= max.toInt
         case Nil => false
       }
@@ -24,11 +24,14 @@ object DayTwo extends BaseApp {
   def partTwo(lines: List[String]): Int = {
     def checkPassword(rule: String): Boolean = {
       val separators = Array(':', ' ', '-')
+
       rule.split(separators).toList match {
         case min :: max :: letter :: _ :: pwd :: _ =>
-          val first = pwd.lift(min.toInt - 1).getOrElse(" ")
-          val second = pwd.lift(max.toInt - 1).getOrElse(" ")
-          second != first && (first.toString == letter || second.toString == letter)
+          val minIndex = min.toInt - 1
+          val maxIndex = max.toInt - 1
+          val first = pwd.lift(minIndex).getOrElse(" ").toString
+          val second = pwd.lift(maxIndex).getOrElse(" ").toString
+          second != first && (first == letter || second == letter)
         case _ => false
       }
     }
