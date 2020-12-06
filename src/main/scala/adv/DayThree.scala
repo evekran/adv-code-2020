@@ -5,7 +5,7 @@ object DayThree extends BaseApp {
 
   val mapWidth = lines.head.length
 
-  private def slope_check(stepX: Int, stepY: Int): Int = {
+  def slopeCheck(stepX: Int, stepY: Int): Int = {
     var treeCount = 0
     var posX = 0
     var posY = 0
@@ -29,12 +29,21 @@ object DayThree extends BaseApp {
     treeCount
   }
 
-  val slOne = slope_check(1, 1)
-  val slTwo = slope_check(3, 1)
-  val slThree = slope_check(5, 1)
-  val slFour = slope_check(7, 1)
-  val slFive = slope_check(1, 2)
+  override def partOne(): Unit = {
+    val result = slopeCheck(3, 1)
 
-  print(slOne * slTwo * slThree * slFour * slFive)
+    println(result)
+  }
 
+  override def partTwo(): Unit = {
+    val slOne = slopeCheck(1, 1)
+    val slTwo = slopeCheck(3, 1)
+    val slThree = slopeCheck(5, 1)
+    val slFour = slopeCheck(7, 1)
+    val slFive = slopeCheck(1, 2)
+
+    val result = slOne * slTwo * slThree * slFour * slFive
+
+    println(result)
+  }
 }

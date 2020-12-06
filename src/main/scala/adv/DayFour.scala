@@ -42,14 +42,14 @@ object DayFour extends BaseApp {
     }
   }
 
-  def partOne(input: List[String]): Unit = {
-    val result = getCredentialsWithRequiredFields(input)
+  def partOne(): Unit = {
+    val result = getCredentialsWithRequiredFields(lines)
 
     println(result.length)
   }
 
-  def partTwo(input: List[String]): Unit = {
-    val credentials = getCredentialsWithRequiredFields(input)
+  def partTwo(): Unit = {
+    val credentials = getCredentialsWithRequiredFields(lines)
 
     val result = credentials.map(credentialsMap => {
       val byr = credentialsMap.getOrElse("byr", "0").toInt
@@ -86,7 +86,4 @@ object DayFour extends BaseApp {
 
     println(result.count(_ == true))
   }
-
-  partOne(lines)
-  partTwo(lines)
 }

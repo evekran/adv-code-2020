@@ -48,7 +48,4 @@ object DayFive extends BaseApp {
 
     println(seat)
   }
-
-  partOne()
-  partTwo()
 }

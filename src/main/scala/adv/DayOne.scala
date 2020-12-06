@@ -34,7 +34,4 @@ object DayOne extends BaseApp {
       }
     }
   }
-
-  partOne()
-  partTwo()
 }

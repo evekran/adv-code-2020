@@ -3,7 +3,7 @@ package adv
 object DayTwo extends BaseApp {
   def filename = "input_day2"
 
-  def partOne(lines: List[String]): Int = {
+  def partOne(): Unit = {
     def checkPassword(rule: String): Boolean = {
       val separators = Array(':', ' ', '-')
 
@@ -18,10 +18,12 @@ object DayTwo extends BaseApp {
       }
     }
 
-    lines.map(checkPassword).count(_ == true)
+    val result = lines.map(checkPassword).count(_ == true)
+
+    println(result)
   }
 
-  def partTwo(lines: List[String]): Int = {
+  def partTwo(): Unit = {
     def checkPassword(rule: String): Boolean = {
       val separators = Array(':', ' ', '-')
 
@@ -36,9 +38,7 @@ object DayTwo extends BaseApp {
       }
     }
 
-    lines.map(checkPassword).count(_ == true)
+    val result = lines.map(checkPassword).count(_ == true)
+    println(result)
   }
-
-  println(partOne(lines))
-  println(partTwo(lines))
 }
